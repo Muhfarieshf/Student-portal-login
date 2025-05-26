@@ -1,23 +1,19 @@
-# Dependency directories
 node_modules/
-
-# Environment files
+.DS_Store
+*.log
 .env
-.env.local
 
-# Build files
-dist/
-build/
-
-# Editor directories
+# Local development
 .vscode/
 .idea/
 
-# Local development cache
-.cache/
+# Build files
+/dist/
+/build/
 
-# Log files
-*.log
+# Environment variables
+*.env.local
+*.env.*.local
 
-# Temporary files
-*.tmp
+# Debug logs
+npm-debug.log*
