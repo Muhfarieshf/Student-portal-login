@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .status-badge { cursor: pointer; }
+        .course-row:hover { background-color: #f8f9fa; }
+        .completed { background-color: #d4edda!important; }
+        .semester-cell {
+            vertical-align: middle;
+            font-weight: bold;
+            background-color: #f8f9fa;
+            border-right: 2px solid #dee2e6;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <header class="container py-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Academic Course Plan</h1>
+            <a href="dashboard.html" class="btn btn-secondary">Back to Profile</a>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Credits</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-row">
+                            <td rowspan="3" class="semester-cell">Semester 1</td>
+                            <td>CS101</td>
+                            <td>Introduction to Programming</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS101">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS102</td>
+                            <td>Discrete Mathematics</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS102">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS103</td>
+                            <td>Computer Organization & Digital Logic</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS103">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td rowspan="3" class="semester-cell">Semester 2</td>
+                            <td>CS201</td>
+                            <td>Data Structures</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS201">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS202</td>
+                            <td>Operating Systems</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS202">Completed</span></td>
+                        </tr>
+                         <tr class="course-row">
+                            <td>CS203</td>
+                            <td>Probability & Statistics</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS203">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td rowspan="3" class="semester-cell">Semester 3</td>
+                            <td>CS301</td>
+                            <td>Computer Networks</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS301">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS302</td>
+                            <td>Database Management Systems</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS302">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS303</td>
+                            <td>Object-Oriented Programming</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS303">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td rowspan="3" class="semester-cell">Semester 4</td>
+                            <td>CS401</td>
+                            <td>Software Engineering</td>
+                            <td>3</td>
+                            <td><span class="badge bg-warning status-badge" data-course="CS401">In Progress</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS402</td>
+                            <td>Web Development</td>
+                            <td>3</td>
+                            <td><span class="badge bg-warning status-badge" data-course="CS402">In Progress</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS403</td>
+                            <td>Mobile Development</td>
+                            <td>3</td>
+                            <td><span class="badge bg-warning status-badge" data-course="CS403">In Progress</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td rowspan="3" class="semester-cell">Semester 5</td>
+                            <td>CS501</td>
+                            <td>Machine Learning & AI</td>
+                            <td>3</td>
+                            <td><span class="badge bg-secondary status-badge" data-course="CS501">Planned</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS502</td>
+                            <td>Distributed Systems & Cloud Computing</td>
+                            <td>3</td>
+                            <td><span class="badge bg-secondary status-badge" data-course="CS502">Planned</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS503</td>
+                            <td>Internet of Things</td>
+                            <td>3</td>
+                            <td><span class="badge bg-secondary status-badge" data-course="CS503">Planned</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td rowspan="2" class="semester-cell">Semester 6</td>
+                            <td>CS601</td>
+                            <td>Capstone Project</td>
+                            <td>6</td>
+                            <td><span class="badge bg-secondary status-badge" data-course="CS601">Planned</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>CS602</td>
+                            <td>Industrial Training</td>
+                            <td>6</td>
+                            <td><span class="badge bg-secondary status-badge" data-course="CS602">Planned</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.status-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                const course = this.dataset.course;
+                const currentStatus = this.textContent;
+                
+                if (currentStatus === 'Completed') {
+                    this.textContent = 'In Progress';
+                    this.className = 'badge bg-warning status-badge';
+                } else if (currentStatus === 'In Progress') {
+                    this.textContent = 'Planned';
+                    this.className = 'badge bg-secondary status-badge';
+                } else {
+                    this.textContent = 'Completed';
+                    this.className = 'badge bg-success status-badge';
+                }
+
+                // Save to localStorage
+                localStorage.setItem(`courseStatus-${course}`, this.textContent);
+            });
+
+            // Load from localStorage
+            const savedStatus = localStorage.getItem(`courseStatus-${this.dataset.course}`);
+            if (savedStatus) {
+                this.textContent = savedStatus;
+                this.className = `badge bg-${savedStatus === 'Completed' ? 'success' : 
+                    savedStatus === 'In Progress' ? 'warning' : 'secondary'} status-badge`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Plan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .status-badge { cursor: pointer; }
+        .course-row:hover { background-color: #f8f9fa; }
+        .completed { background-color: #d4edda!important; }
+    </style>
+</head>
+<body class="bg-light">
+    <header class="container py-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Academic Course Plan</h1>
+            <a href="profile-ahmad.html" class="btn btn-secondary">Back to Profile</a>
+        </div>
+    </header>
+
+    <main class="container mt-4">
+        <div class="card shadow">
+            <div class="card-body">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                            <th>Credits</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="course-row">
+                            <td>Semester 1</td>
+                            <td>CS101</td>
+                            <td>Introduction to Programming</td>
+                            <td>3</td>
+                            <td><span class="badge bg-success status-badge" data-course="CS101">Completed</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>Semester 2</td>
+                            <td>CS102</td>
+                            <td>Data Structures</td>
+                            <td>4</td>
+                            <td><span class="badge bg-warning status-badge" data-course="CS102">In Progress</span></td>
+                        </tr>
+                        <tr class="course-row">
+                            <td>Semester 3</td>
+                            <td>IMS544</td>
+                            <td>Database Systems</td>
+                            <td>3</td>
+                            <td><span class="badge bg-secondary status-badge" data-course="IMS544">Planned</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.status-badge').forEach(badge => {
+            badge.addEventListener('click', function() {
+                const course = this.dataset.course;
+                const currentStatus = this.textContent;
+                
+                if (currentStatus === 'Completed') {
+                    this.textContent = 'In Progress';
+                    this.className = 'badge bg-warning status-badge';
+                } else if (currentStatus === 'In Progress') {
+                    this.textContent = 'Planned';
+                    this.className = 'badge bg-secondary status-badge';
+                } else {
+                    this.textContent = 'Completed';
+                    this.className = 'badge bg-success status-badge';
+                }
+
+                // Save to localStorage
+                localStorage.setItem(`courseStatus-${course}`, this.textContent);
+            });
+
+            // Load from localStorage
+            const savedStatus = localStorage.getItem(`courseStatus-${this.dataset.course}`);
+            if (savedStatus) {
+                this.textContent = savedStatus;
+                this.className = `badge bg-${savedStatus === 'Completed' ? 'success' : 
+                    savedStatus === 'In Progress' ? 'warning' : 'secondary'} status-badge`;
+            }
+        });
+    </script>
+</body>
+</html>

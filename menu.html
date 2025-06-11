@@ -6,29 +6,343 @@
     <title>Student Portal - Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
+    <style>
+    .progress-bar {
+        transition: width 0.3s ease, opacity 0.3s ease;
+    }
+    </style>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 </head>
-<body class="bg-light">
-    <main class="container d-flex align-items-center vh-100">
-        <div class="w-100">
-            <div class="card shadow mx-auto" style="max-width: 400px;">
-                <div class="card-body p-4 text-center">
-                    <h2 class="card-title mb-4">Main Menu</h2>
-                    <div class="d-grid gap-3">
-                        <a href="dashboard.html" class="btn btn-primary btn-lg">Dashboard</a>
-                        <a href="profiles.html" class="btn btn-primary btn-lg">View Profiles</a>
-                        <a href="grades.html" class="btn btn-primary btn-lg">Academic Records</a>
+<body class="bg-light d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Student Portal</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profiles.html">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="grades.html">Academic Records</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button id="logoutBtn" class="btn btn-outline-danger">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<main class="container mt-4 flex-grow-1">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-body">
+                    <h4 class="mb-4">Welcome to the Student Portal!</h4>
+                    <h1 class="display-4 mb-4">John Doe</h1>
+                    <p>Here, you can access your academic records, profiles, announcements, and more.</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">Events Calendar</h5>
+                            <div id='calendar'></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">Announcements</h5>
+                        <div id="scheduleCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#scheduleCarousel" data-bs-slide-to="0" class="active"></button>
+                                <button type="button" data-bs-target="#scheduleCarousel" data-bs-slide-to="1"></button>
+                                <button type="button" data-bs-target="#scheduleCarousel" data-bs-slide-to="2"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="https://picsum.photos/800/400?random=1" class="d-block w-100" alt="Campus">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://picsum.photos/800/400?random=2" class="d-block w-100" alt="Lecture">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="https://picsum.photos/800/400?random=3" class="d-block w-100" alt="Library">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#scheduleCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#scheduleCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="row mt-8">
+                <div class="col-md-12 ms-auto mb-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">Academic Progress</h5>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Software Engineering</h5>
+                                            <div class="subject-progress" data-subject="software-engineering">
+                                                <div class="progress mb-3" style="height: 25px;">
+                                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%" 
+                                                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                                         data-individual="20" data-group="40" id="subjectProgress">
+                                                        No assessments uploaded
+                                                    </div>
+                                                </div>
+                                                <div class="upload-buttons">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Assessment Actions
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><button class="dropdown-item upload-btn" data-type="individual">
+                                                                Upload Individual Work
+                                                            </button></li>
+                                                            <li><button class="dropdown-item upload-btn" data-type="group">
+                                                                Upload Group Work
+                                                            </button></li>
+                                                            <li><hr class="dropdown-divider"></li>
+                                                            <li><button class="dropdown-item text-danger remove-btn" data-type="individual">
+                                                                Remove Individual Work
+                                                            </button></li>
+                                                            <li><button class="dropdown-item text-danger remove-btn" data-type="group">
+                                                                Remove Group Work
+                                                            </button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Web Development</h5>
+                                            <div class="subject-progress" data-subject="web-development">
+                                                <div class="progress mb-3" style="height: 25px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%" 
+                                                         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                                         data-individual="20" data-group="40" id="webDevProgress">
+                                                        60% Complete
+                                                    </div>
+                                                </div>
+                                                <div class="upload-buttons">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Assessment Actions
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><button class="dropdown-item upload-btn" data-type="individual">
+                                                                Upload Individual Work
+                                                            </button></li>
+                                                            <li><button class="dropdown-item upload-btn" data-type="group">
+                                                                Upload Group Work
+                                                            </button></li>
+                                                            <li><hr class="dropdown-divider"></li>
+                                                            <li><button class="dropdown-item text-danger remove-btn" data-type="individual">
+                                                                Remove Individual Work
+                                                            </button></li>
+                                                            <li><button class="dropdown-item text-danger remove-btn" data-type="group">
+                                                                Remove Group Work
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card shadow mb-4">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Mobile Development</h5>
+                                            <div class="subject-progress" data-subject="mobile-development">
+                                                <div class="progress mb-3" style="height: 25px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 25%" 
+                                                         aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
+                                                         data-individual="20" data-group="40" id="mobileDevProgress">
+                                                        25% Complete
+                                                    </div>
+                                                </div>
+                                                <div class="upload-buttons">
+                                                    <div class="btn-group">
+                                                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            Assessment Actions
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><button class="dropdown-item upload-btn" data-type="individual">
+                                                                Upload Individual Work
+                                                            </button></li>
+                                                            <li><button class="dropdown-item upload-btn" data-type="group">
+                                                                Upload Group Work
+                                                            </button></li>
+                                                            <li><hr class="dropdown-divider"></li>
+                                                            <li><button class="dropdown-item text-danger remove-btn" data-type="individual">
+                                                                Remove Individual Work
+                                                            </button></li>
+                                                            <li><button class="dropdown-item text-danger remove-btn" data-type="group">
+                                                                Remove Group Work
+                                                            </button></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer class="bg-dark text-white py-3 mt-auto">
-        <div class="container">
-            <p class="mb-0 text-center">&copy; 2024 Student Portal. All rights reserved.</p>
-        </div>
-    </footer>
+<footer class="bg-dark text-white py-3 mt-auto shadow">
+  <div class="container">
+    <p class="mb-0 text-center">&copy; 2024 Student Portal. All rights reserved.</p>
+  </div>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Toast notification -->
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="uploadToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header bg-success text-white">
+      <strong class="me-auto">Upload Successful</strong>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">
+      Your assessment has been uploaded successfully!
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize calendar
+  var calendarEl = document.getElementById('calendar');
+  if (calendarEl) {
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: [
+        {
+          title: 'Exam Week',
+          start: '2025-06-20',
+          end: '2025-06-25'
+        },
+        {
+          title: 'Project Deadline',
+          start: '2025-06-15',
+          color: 'red'
+        }
+      ]
+    });
+    calendar.render();
+  }
+
+  // Upload button functionality
+  document.querySelectorAll('.upload-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const container = this.closest('.subject-progress');
+      const type = this.dataset.type;
+      const subject = container.dataset.subject;
+      
+      // Simulate file upload
+      const subjectKey = `${subject}-${type}WorkUploaded`;
+      const progressData = JSON.parse(localStorage.getItem('progressData') || '{}');
+      progressData[subjectKey] = true;
+      localStorage.setItem('progressData', JSON.stringify(progressData));
+      
+      updateProgressBar(container);
+      showUploadToast();
+    });
+  });
+
+  // Remove button functionality
+  document.querySelectorAll('.remove-btn').forEach(button => {
+    button.addEventListener('click', function(e) {
+      e.preventDefault();
+      const container = this.closest('.subject-progress');
+      const type = this.dataset.type;
+      const subject = container.dataset.subject;
+      
+      const subjectKey = `${subject}-${type}WorkUploaded`;
+      const progressData = JSON.parse(localStorage.getItem('progressData') || '{}');
+      delete progressData[subjectKey];
+      localStorage.setItem('progressData', JSON.stringify(progressData));
+      
+      updateProgressBar(container);
+    });
+  });
+
+  // Initialize progress bars on load
+  document.querySelectorAll('.subject-progress').forEach(container => {
+    updateProgressBar(container);
+  });
+
+  // Logout functionality
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function() {
+      sessionStorage.removeItem('authenticated');
+      window.location.href = 'login.html';
+    });
+  }
+});
+
+function updateProgressBar(container) {
+  const progressBar = container.querySelector('.progress-bar');
+  const subjectKey = container.dataset.subject;
+  const progressData = JSON.parse(localStorage.getItem('progressData') || '{}');
+  
+  const individual = progressData[`${subjectKey}-individualWorkUploaded`] ? 
+    parseInt(progressBar.dataset.individual) : 0;
+  const group = progressData[`${subjectKey}-groupWorkUploaded`] ? 
+    parseInt(progressBar.dataset.group) : 0;
+  const total = individual + group;
+  
+  progressBar.style.width = `${total}%`;
+  progressBar.textContent = total > 0 ? `${total}% Complete` : 'No assessments uploaded';
+  progressBar.setAttribute('aria-valuenow', total);
+  
+  // Update progress bar color based on completion
+  if (total === 0) {
+    progressBar.className = 'progress-bar bg-secondary';
+  } else if (total < 60) {
+    progressBar.className = 'progress-bar bg-warning';
+  } else {
+    progressBar.className = 'progress-bar bg-success';
+  }
+}
+
+function showUploadToast() {
+  const toastElement = document.getElementById('uploadToast');
+  if (toastElement) {
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+  }
+}
+</script>
 </body>
 </html>
