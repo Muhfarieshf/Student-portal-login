@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Student Portal Project
 
 A responsive web application for managing student profiles and academic records, built with Bootstrap 5.
@@ -24,3 +25,7 @@ A responsive web application for managing student profiles and academic records,
 5. Save to deploy
 
 [Live Demo](https://github.com/Muhfarieshf/Student-portal-login/)
+=======
+## Live Demo
+[Click here to view the app](https://Muhfarieshf.github.io/Student-portal-login)
+>>>>>>> 6a168bfdd0a7e853ab2a58892db90fb87bd90f39
