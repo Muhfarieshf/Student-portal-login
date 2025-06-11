@@ -12,7 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     // Check validity
     if(form.checkValidity()) {
         // Simulate successful login
-        window.location.href = 'menu.html';
+        window.location.href = '/dashboard.html';
     }
 }, false);
 
