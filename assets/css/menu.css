@@ -74,9 +74,9 @@ footer {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-.shadow-eventcalendar {
+.shadow-eventcalendar h5 {
   font-family: "cabin", sans-serif;
-  font-weight: 500;
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -139,4 +139,8 @@ a:hover {
 .d-flex:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   background: white;
+}
+
+.upload-btn:hover {
+  color: #0061FF;
 }
