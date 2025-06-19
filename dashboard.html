@@ -5,43 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Portal - Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="/assets/css/dashboard.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-    <header class="container py-3">
-        <div class="d-flex justify-content-between align-items-center">
-            <h1>Student Dashboard</h1>
-            <div class="d-flex gap-2">
-                <a href="courses2.html" class="btn btn-secondary">Courses Plan</a>
-                <a href="menu.html" class="btn btn-secondary">Back to Menu</a>
-            </div>
-        </div>
-    </header>
-
+<body class="bg-light d-flex flex-column min-vh-100">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="menu.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard.html">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="lecterurs.html">Lecturers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="grades.html">Grades</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <button id="logoutBtn" class="btn btn-outline-danger">Logout</button>
+      </div>
+    </div>
+  </div>
+</nav>
     <main class="container mt-4">
         <div class="row g-4">
             <!-- Profile Section -->
             <div class="col-md-4">
-                <div class="card shadow">
+                <div class="card shadow-profilesection">
                     <div class="card-body text-center">
-                        <img src="assets/image/johndoe.jpg" alt="Profile" class="rounded-circle mb-3">
+                        <img src="assets/image/johndoe.png" alt="Profile" class="rounded-circle mb-3">
                         <h3>John Doe</h3>
                         <p class="text-muted">Computer Science</p>
                         <div class="list-group">
                             <div class="list-group-item">Student ID: 123456</div>
-                            <div class="list-group-item">Email: john@student.uitm.edu.my</div>
+                            <div class="list-group-item">Email: john@university.student.edu.my</div>
                             <div class="list-group-item">Semester: 4</div>
                         </div>
+                        <a href="courses.html" class="btn btn-primary mt-2 w-100 d-block text-center">Courses Plan</a>
                     </div>
                 </div>
             </div>
-
             <!-- Academic Summary -->
             <div class="col-md-8">
-                <div class="card shadow">
+                <div class="card shadow-academicsummary">
                     <div class="card-body">
                         <h4 class="mb-4">Academic Summary</h4>
-                        
                         <div class="row mb-4">
                             <div class="col-6 col-md-3">
                                 <div class="card text-white bg-primary mb-3">
@@ -74,15 +90,15 @@
                             <tbody>
                                 <tr>
                                     <td>9-11AM</td>
+                                    <td>Software Engineering</td>
                                     <td>Web Development</td>
-                                    <td>Database Systems</td>
-                                    <td>Networking</td>
+                                    <td>Mobile Development</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                </div>
-                <div class="card shadow mt-4">
+                </div>        
+                <div class="card shadow-discussion mt-4">
                     <div class="card-body">
                         <h4 class="mb-4">Discussions</h4>
                         <form id="messageForm">
@@ -100,25 +116,36 @@
                 </div>
             </div>
         </div>
-    </main>
+
 <br><br>
-    <footer class="bg-dark text-white py-3 mt-auto">
-        <div class="container">
-            <p class="mb-0 text-center">&copy; 2024 Student Portal. All rights reserved.</p>
-        </div>
-    </footer>
+        <footer class="bg-dark text-white py-3 mt-auto shadow w-100 mx-0">
+  <div class="container-fluid px-0">
+    <p class="mb-0 text-center">&copy; 2025 Student Portal. All rights reserved.</p>
+  </div>
+</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <script>
+/**
+ * Initializes authentication check and event listeners when DOM loads
+ * @listens DOMContentLoaded
+ * Checks sessionStorage for valid authentication
+ * Redirects to login page if not authenticated
+ */
 document.addEventListener('DOMContentLoaded', function() {
   if (sessionStorage.getItem('authenticated') !== 'true') {
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
   }
 
-  document.getElementById('logoutBtn').addEventListener('click', function() {
+  /**
+ * Handles logout functionality
+ * Clears session authentication
+ * Redirects to login page
+ */
+document.getElementById('logoutBtn').addEventListener('click', function() {
   sessionStorage.removeItem('authenticated');
-  window.location.href = 'login.html';
+  window.location.href = 'index.html';
 });
 });
 
@@ -128,6 +155,11 @@ const messageFeed = document.getElementById('messageFeed');
 
 let messages = JSON.parse(localStorage.getItem('communityMessages')) || [];
 
+/**
+ * Renders messages and replies from localStorage
+ * @function
+ * @returns {void} Updates DOM with formatted messages
+ */
 function renderMessages() {
     messageFeed.innerHTML = messages.map((msg, index) => `
         <div class="card mb-3">
@@ -155,6 +187,13 @@ function renderMessages() {
     `).join('');
 }
 
+/**
+ * Handles message submission form
+ * @listens submit
+ * @param {Event} e - Form submission event
+ * Saves new message to localStorage
+ * Updates message display
+ */
 messageForm.addEventListener('submit', function(e) {
     e.preventDefault();
     const messageText = document.getElementById('messageInput').value;
@@ -167,18 +206,33 @@ messageForm.addEventListener('submit', function(e) {
             timestamp: new Date().toISOString()
         });
         localStorage.setItem('communityMessages', JSON.stringify(messages));
-        renderMessages();
+        // Initial render of messages on page load
+renderMessages();
         messageForm.reset();
     }
 });
 
+/**
+ * Deletes a message from storage
+ * @function
+ * @param {number} index - Array index of message to delete
+ * Updates localStorage and re-renders messages
+ */
 function deleteMessage(index) {
     messages.splice(index, 1);
     localStorage.setItem('communityMessages', JSON.stringify(messages));
-    renderMessages();
+    // Initial render of messages on page load
+renderMessages();
 }
 
 // Add reply functionality
+/**
+ * Handles reply button clicks
+ * @listens click
+ * @param {Event} e - Click event
+ * Manages reply storage in message objects
+ * Updates localStorage and message display
+ */
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('reply-btn')) {
         const index = e.target.dataset.messageIndex;
@@ -192,10 +246,12 @@ document.addEventListener('click', function(e) {
                 timestamp: new Date().toISOString()
             });
             localStorage.setItem('communityMessages', JSON.stringify(messages));
-            renderMessages();
+            // Initial render of messages on page load
+renderMessages();
             input.value = '';
         }
     }
 });
+// Initial render of messages on page load
 renderMessages();
 </script>

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Portal - Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Cabin:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="/assets/css/menu.css" rel="stylesheet">
     <style>
     .progress-bar {
         transition: width 0.3s ease, opacity 0.3s ease;
@@ -15,26 +18,29 @@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 </head>
 <body class="bg-light d-flex flex-column min-vh-100">
+<body class="bg-light d-flex flex-column min-vh-100">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="navbar-brand" href="#">Student Portal</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
+          <a class="nav-link" href="menu.html">Home</a>
+        </li>
+        <li class="nav-item">
           <a class="nav-link" href="dashboard.html">Dashboard</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profiles.html">Profiles</a>
+          <a class="nav-link" href="lecterurs.html">Lecturers</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="grades.html">Academic Records</a>
+          <a class="nav-link" href="grades.html">Grades</a>
         </li>
       </ul>
       <div class="d-flex">
-        <button id="logoutBtn" class="btn btn-outline-danger">Logout</button>
+        <button id="logoutBtn" class="btn btn-outline-danger">Log out</button>
       </div>
     </div>
   </div>
@@ -43,7 +49,7 @@
 <main class="container mt-4 flex-grow-1">
     <div class="row">
         <div class="col-md-12">
-            <div class="card shadow">
+            <div class="card shadow-welcomebanner">
                 <div class="card-body">
                     <h4 class="mb-4">Welcome to the Student Portal!</h4>
                     <h1 class="display-4 mb-4">John Doe</h1>
@@ -52,7 +58,7 @@
             </div>
             <div class="row mt-4">
                 <div class="col-md-4 mb-4">
-                    <div class="card shadow">
+                    <div class="card shadow-eventcalendar">
                         <div class="card-body">
                             <h5 class="card-title">Events Calendar</h5>
                             <div id='calendar'></div>
@@ -60,9 +66,9 @@
                     </div>
                 </div>
                 <div class="col-md-8 mb-4">
-                    <div class="card shadow">
+                    <div class="card shadow-announcement">
                         <div class="card-body">
-                            <h5 class="card-title">Announcements</h5>
+                            <h5 class="card-title text-center">Announcements</h5>
                         <div id="scheduleCarousel" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
                                 <button type="button" data-bs-target="#scheduleCarousel" data-bs-slide-to="0" class="active"></button>
@@ -71,13 +77,13 @@
                             </div>
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="https://picsum.photos/800/400?random=1" class="d-block w-100" alt="Campus">
+                                    <img src="assets/image/academic_seminar.png" class="d-block w-100" alt="Seminar">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://picsum.photos/800/400?random=2" class="d-block w-100" alt="Lecture">
+                                    <img src="assets/image/course_registration.png" class="d-block w-100" alt="Course Registration">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://picsum.photos/800/400?random=3" class="d-block w-100" alt="Library">
+                                    <img src="assets/image/online_course.png" class="d-block w-100" alt="Online Course">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#scheduleCarousel" data-bs-slide="prev">
@@ -93,9 +99,9 @@
             </div>
             <div class="row mt-8">
                 <div class="col-md-12 ms-auto mb-4">
-                    <div class="card shadow">
+                    <div class="card shadow-academicprogress">
                         <div class="card-body">
-                            <h5 class="card-title">Academic Progress</h5>
+                            <h5 class="card-title text-center">Academic Progress</h5>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card shadow mb-4">
@@ -306,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (logoutBtn) {
     logoutBtn.addEventListener('click', function() {
       sessionStorage.removeItem('authenticated');
-      window.location.href = 'login.html';
+      window.location.href = 'index.html';
     });
   }
 });
