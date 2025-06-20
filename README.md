@@ -24,6 +24,11 @@ A responsive web application for managing student profiles and academic records,
 4. Select Branch: `main` and Folder: `/ (root)`
 5. Save to deploy
 
+## Log in Detail
+
+Username: admin
+Password: password
+
 [Live Demo](https://github.com/Muhfarieshf/Student-portal-login/)
 =======
 ## Live Demo
