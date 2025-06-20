@@ -52,11 +52,6 @@ a:hover {
   border-color: #0061FF;
 }
 
-.d-flex:hover {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background: white;
-}
-
 .lecturer-img {
   width: 120px;
   height: 160px;
