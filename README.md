@@ -26,8 +26,8 @@ A responsive web application for managing student profiles and academic records,
 
 ## Log in Detail
 
-Username: admin
-Password: password
+1. Username: admin
+2. Password: password
 
 [Live Demo](https://github.com/Muhfarieshf/Student-portal-login/)
 =======
