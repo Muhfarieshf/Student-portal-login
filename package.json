@@ -1,0 +1,15 @@
+{
+  "name": "student-portal-login",
+  "version": "1.0.0",
+  "description": "A simple student portal login project",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "author": "Muhfarieshf",
+  "license": "ISC",
+  "dependencies": {
+     "express": "^4.18.2"
+  }
+}
